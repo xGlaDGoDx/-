@@ -6638,24 +6638,32 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Json,
 		C3.Plugins.Sprite,
 		C3.Plugins.Text,
-		C3.Plugins.Touch,
-		C3.Plugins.Eponesh_GameScore,
 		C3.Behaviors.Pin,
 		C3.Behaviors.MoveTo,
+		C3.Plugins.Touch,
+		C3.Plugins.Eponesh_GameScore,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerGet,
 		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Behaviors.Pin.Acts.PinByProperties,
+		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.System.Acts.SubVar,
+		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Plugins.System.Acts.GoToLayout,
+		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
-		C3.Behaviors.MoveTo.Acts.MoveToPosition,
-		C3.Plugins.Sprite.Exps.Y,
+		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
@@ -6663,37 +6671,36 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.LoadURL,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerAvatar,
 		C3.Plugins.Eponesh_GameScore.Cnds.LeaderboardEachPlayer,
-		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerAvatar,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerField,
 		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.System.Exps.loopindex,
+		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Json.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
 		C3.Plugins.AJAX.Cnds.OnComplete,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
-		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
-		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.Text.Cnds.CompareText,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.System.Exps.random,
 		C3.Plugins.Json.Exps.ArraySize,
 		C3.Plugins.Json.Cnds.ForEach,
-		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.Arr.Acts.Insert,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.Arr.Acts.Delete,
 		C3.Plugins.Arr.Exps.IndexOf,
-		C3.Plugins.Text.Exps.Text
+		C3.Plugins.Text.Exps.Text,
+		C3.Plugins.Text.Cnds.CompareText,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
+		C3.Behaviors.MoveTo.Cnds.IsMoving,
+		C3.Plugins.System.Cnds.Every
 	];
 };
 self.C3_JsPropNameTable = [
@@ -6710,6 +6717,17 @@ self.C3_JsPropNameTable = [
 	{КнопкаВыбора: 0},
 	{ТабличкаСундука: 0},
 	{ТекстВыбор: 0},
+	{Прикрепить: 0},
+	{РамкиДляАватарок: 0},
+	{ДвижениеК: 0},
+	{фонДляРейтинга: 0},
+	{РейтТекст: 0},
+	{Аватар: 0},
+	{Аватар2: 0},
+	{Аватар3: 0},
+	{Аватар4: 0},
+	{Аватар5: 0},
+	{Аватар6: 0},
 	{Играть: 0},
 	{CheckLoad: 0},
 	{Рейтинг: 0},
@@ -6721,25 +6739,27 @@ self.C3_JsPropNameTable = [
 	{Тач: 0},
 	{GameScore: 0},
 	{Фон: 0},
-	{Прикрепить: 0},
 	{Выйти: 0},
-	{Аватар: 0},
-	{Аватар2: 0},
-	{Аватар3: 0},
-	{Аватар4: 0},
-	{Аватар5: 0},
-	{Аватар6: 0},
-	{РамкиДляАватарок: 0},
-	{ДвижениеК: 0},
-	{фонДляРейтинга: 0},
-	{РейтТекст: 0},
+	{МонетыТекст: 0},
+	{ОткрытьЗаЗвёзды: 0},
+	{ОткрытьЗаМонеты: 0},
+	{ФонДляОткрытияДвери: 0},
+	{ФонДляБанка: 0},
+	{КнопкаДоната: 0},
+	{ФонДляШтрафа: 0},
+	{КнопкаОплатыШтрафаЗаМонеты: 0},
+	{ТаймерШтрафаТекст: 0},
+	{ФонДляТурнира: 0},
 	{Аватары: 0},
 	{StarsCount: 0},
 	{CheckpointsCount: 0},
+	{TypeQuiz: 0},
 	{Checkpoints: 0},
 	{RandomID: 0},
 	{TrueStr: 0},
-	{RightChoice: 0}
+	{RightChoice: 0},
+	{Money: 0},
+	{Timer: 0}
 ];
 }
 
@@ -6845,6 +6865,18 @@ self.C3_ExpressionFuncs = [
 			return () => f0("checkpointscount");
 		},
 		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("moneycount");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("starscount");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("typequiz");
+		},
+		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() % 9);
 		},
@@ -6852,16 +6884,29 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => "Кнопочки",
-		() => 1,
-		() => 0.1,
 		() => 0,
+		() => 1,
+		() => 2,
+		() => 3,
+		() => 8,
 		() => 540,
+		() => 1043,
+		() => "Кнопочки",
+		() => "КнопкиБанка",
+		() => "КнопкиДвери",
+		() => 0.1,
+		() => 75,
+		() => "starscount",
+		() => "moneycount",
+		() => 960,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
 		() => -508,
+		() => -567,
+		() => -1000,
+		() => 1617,
 		() => "SC",
 		() => "checkpointscount",
 		() => 5,
@@ -6875,26 +6920,13 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() - 1);
 		},
+		() => 9,
 		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() + 1);
+			const n0 = p._GetNode(0);
+			return () => ((n0.ExpObject() + 1) % 4);
 		},
-		() => 2,
+		() => "typequiz",
 		() => "Quiz",
-		() => 3,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 1);
-		},
-		() => 0.5,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 1);
-		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -6938,7 +6970,24 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject(".url");
-		}
+		},
+		() => "Кнопки",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 1);
+		},
+		() => 0.5,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 1);
+		},
+		() => "Штраф",
+		() => 15,
+		() => -580
 ];
 
 
