@@ -6710,6 +6710,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerField,
 		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.System.Exps.loopindex,
+		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Date.Exps.ToTimerHours,
@@ -6731,6 +6732,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.MoveTo.Acts.Stop,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Exps.Opacity,
+		C3.Plugins.Text.Acts.SetOpacity,
 		C3.Behaviors.MoveTo.Acts.MoveToObject,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Json.Acts.Parse,
@@ -6806,20 +6808,25 @@ self.C3_JsPropNameTable = [
 	{РамкаДляИгрокаНаКарте: 0},
 	{АватарИгрока: 0},
 	{ПозицияТекст: 0},
-	{Текст: 0},
+	{ЗаданиеТекст: 0},
 	{КрылатыеВыражения: 0},
 	{Звезда: 0},
 	{Монета: 0},
+	{ТурнирТекст: 0},
+	{ЧекпоинтТекст: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
 	{CheckpointsCount: 0},
 	{TypeQuiz: 0},
+	{TimeRateCount: 0},
 	{Checkpoints: 0},
+	{CycleNum: 0},
 	{TimeLeft: 0},
 	{TimeNow: 0},
 	{Day: 0},
 	{GSDay: 0},
+	{DayNow: 0},
 	{RandomID: 0},
 	{TrueStr: 0},
 	{RightChoice: 0},
@@ -6947,11 +6954,19 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
+			return () => (Math.round((v0.GetValue() / 9)) + 1);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * 2);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("timerate");
 		},
 		() => 1,
 		p => {
@@ -7025,6 +7040,19 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 9,
 		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => ((f0() + 1) * v1.GetValue());
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 40);
+		},
+		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() + 1) % 4);
 		},
@@ -7064,10 +7092,6 @@ self.C3_ExpressionFuncs = [
 			return () => and(and(f0(v1.GetValue()), ":"), f2(v3.GetValue()));
 		},
 		() => "day",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue()).toString();
-		},
 		() => "timerate",
 		() => 4,
 		() => "Угадай пословицы по картинке",
@@ -7080,10 +7104,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "Quiz",
 		() => "Кнопки",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 1);
