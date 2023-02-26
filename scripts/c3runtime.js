@@ -6670,17 +6670,21 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerGet,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
+		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Acts.LoadURL,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerAvatar,
+		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Text.Cnds.CompareInstanceVar,
 		C3.Behaviors.Pin.Acts.Unpin,
-		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Plugins.System.Cnds.IsGroupActive,
-		C3.Plugins.Date.Exps.GetUTCHours,
+		C3.Plugins.System.Exps.int,
+		C3.Plugins.System.Exps.tokenat,
+		C3.Plugins.Date.Exps.ToUTCString,
 		C3.Plugins.Date.Exps.Now,
+		C3.Plugins.Date.Exps.GetUTCHours,
 		C3.Plugins.Date.Exps.GetUTCMinutes,
 		C3.Plugins.Date.Exps.GetUTCSeconds,
 		C3.Plugins.System.Cnds.Every,
@@ -6691,6 +6695,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.Sprite.Exps.Y,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Plugins.System.Acts.GoToLayout,
@@ -6699,27 +6704,35 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
-		C3.Plugins.Eponesh_GameScore.Cnds.LeaderboardEachPlayer,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
+		C3.Plugins.Eponesh_GameScore.Cnds.LeaderboardEachPlayer,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerAvatar,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerField,
 		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.System.Exps.loopindex,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
-		C3.Plugins.System.Acts.SetFunctionReturnValue,
 		C3.Plugins.Date.Exps.ToTimerHours,
 		C3.Plugins.Date.Exps.ToTimerMinutes,
-		C3.Plugins.Date.Exps.GetUTCDay,
+		C3.Plugins.System.Acts.SetFunctionReturnValue,
 		C3.Plugins.Json.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
 		C3.Plugins.AJAX.Cnds.OnComplete,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
-		C3.Plugins.Sprite.Cnds.CompareOpacity,
+		C3.Plugins.Text.Cnds.CompareText,
+		C3.Plugins.Sprite.Acts.SetOpacity,
+		C3.Behaviors.MoveTo.Cnds.IsMoving,
+		C3.Behaviors.MoveTo.Cnds.OnArrived,
+		C3.Behaviors.MoveTo.Acts.Stop,
+		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Sprite.Exps.Opacity,
+		C3.Behaviors.MoveTo.Acts.MoveToObject,
+		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.System.Exps.random,
@@ -6730,11 +6743,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.Arr.Acts.Delete,
 		C3.Plugins.Arr.Exps.IndexOf,
-		C3.Plugins.Text.Exps.Text,
-		C3.Plugins.Text.Cnds.CompareText,
-		C3.Plugins.Sprite.Acts.SetOpacity,
-		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
-		C3.Behaviors.MoveTo.Cnds.IsMoving
+		C3.Plugins.Text.Exps.Text
 	];
 };
 self.C3_JsPropNameTable = [
@@ -6746,11 +6755,13 @@ self.C3_JsPropNameTable = [
 	{Индикатор: 0},
 	{ИндикаторЗвезд: 0},
 	{КамкаКартинки: 0},
+	{Load: 0},
 	{КартинкаПример: 0},
 	{ID: 0},
 	{КнопкаВыбора: 0},
 	{ТабличкаСундука: 0},
 	{ТекстВыбор: 0},
+	{Подложка: 0},
 	{Прикрепить: 0},
 	{РамкиДляАватарок: 0},
 	{ДвижениеК: 0},
@@ -6794,6 +6805,11 @@ self.C3_JsPropNameTable = [
 	{неверноИндикатор: 0},
 	{РамкаДляИгрокаНаКарте: 0},
 	{АватарИгрока: 0},
+	{ПозицияТекст: 0},
+	{Текст: 0},
+	{КрылатыеВыражения: 0},
+	{Звезда: 0},
+	{Монета: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -6802,6 +6818,7 @@ self.C3_JsPropNameTable = [
 	{Checkpoints: 0},
 	{TimeLeft: 0},
 	{TimeNow: 0},
+	{Day: 0},
 	{GSDay: 0},
 	{RandomID: 0},
 	{TrueStr: 0},
@@ -6933,17 +6950,37 @@ self.C3_ExpressionFuncs = [
 			return () => v0.GetValue();
 		},
 		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() * 2);
+		},
+		() => 1,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (((v0.GetValue() * 2) + 1) % 7);
+		},
+		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
 		},
 		() => -4,
 		() => 0,
-		() => 1,
 		() => 2,
 		() => 3,
 		() => 8,
 		() => 540,
 		() => 1043,
+		() => "Турнир",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => f0(f1(f2((f3() + (3 * 3600000))), 1, " "));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("day");
+		},
 		() => "Таймер Турнира",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -6953,7 +6990,7 @@ self.C3_ExpressionFuncs = [
 			const f4 = p._GetNode(4).GetBoundMethod();
 			const f5 = p._GetNode(5).GetBoundMethod();
 			const f6 = p._GetNode(6).GetBoundMethod();
-			return () => f0((((((f1(f2()) + 1) * 3600) + (f3(f4()) * 60)) + f5(f6())) * 1000));
+			return () => f0((((((f1(f2()) + 3) * 3600) + (f3(f4()) * 60)) + f5(f6())) * 1000));
 		},
 		() => 60,
 		() => "Кнопочки",
@@ -6977,6 +7014,11 @@ self.C3_ExpressionFuncs = [
 		() => 5,
 		() => "",
 		() => -5,
+		() => -1,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0() + 1);
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() - 1);
@@ -6990,16 +7032,87 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
+			return () => f0(v1.GetValue());
+		},
+		() => 10,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
+			return () => and((and("0", f0(v1.GetValue())) + ":"), f2(v3.GetValue()));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
+			return () => and((and(f0(v1.GetValue()), ":") + "0"), f2(v3.GetValue()));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
+			return () => and(((and("0", f0(v1.GetValue())) + ":") + "0"), f2(v3.GetValue()));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const v3 = p._GetNode(3).GetVar();
 			return () => and(and(f0(v1.GetValue()), ":"), f2(v3.GetValue()));
 		},
+		() => "day",
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => f0(f1());
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue()).toString();
+		},
+		() => "timerate",
+		() => 4,
+		() => "Угадай пословицы по картинке",
+		() => "Угадай афоризмы по картинке",
+		() => "Угадай крылатые выражения по картинке",
+		() => "Угадай героев кино по картинке",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and(("Задание" + " "), (v0.GetValue() + 1));
 		},
 		() => "Quiz",
+		() => "Кнопки",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 1);
+		},
+		() => 0.5,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 1);
+		},
+		() => 100,
+		() => "Штраф",
+		() => 15,
+		() => "Анимации",
+		() => 408,
+		() => 260,
+		() => 542,
+		() => 670,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 2);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 2);
+		},
+		() => 0.2,
+		() => 683,
+		() => 1206,
+		() => -580,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -7023,6 +7136,10 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
+			return () => n0.ExpObject(".url");
+		},
+		p => {
+			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => n0.ExpObject(Math.round(f1(0, 2)));
 		},
@@ -7039,29 +7156,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject(0);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(".url");
-		},
-		() => "Кнопки",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 1);
-		},
-		() => 0.5,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 1);
-		},
-		() => 100,
-		() => "Штраф",
-		() => 15,
-		() => -580
+		}
 ];
 
 
