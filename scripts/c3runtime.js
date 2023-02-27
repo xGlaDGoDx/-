@@ -6710,6 +6710,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerField,
 		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.System.Exps.loopindex,
+		C3.Plugins.Text.Acts.SetOpacity,
 		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
@@ -6732,13 +6733,11 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.MoveTo.Acts.Stop,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Exps.Opacity,
-		C3.Plugins.Text.Acts.SetOpacity,
 		C3.Behaviors.MoveTo.Acts.MoveToObject,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.System.Exps.random,
-		C3.Plugins.Json.Exps.ArraySize,
 		C3.Plugins.Json.Cnds.ForEach,
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.Arr.Acts.Insert,
@@ -7044,13 +7043,10 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => ((f0() + 1) * v1.GetValue());
 		},
+		() => 100,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 40);
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -7113,7 +7109,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 1);
 		},
-		() => 100,
 		() => "Штраф",
 		() => 15,
 		() => "Анимации",
@@ -7135,8 +7130,11 @@ self.C3_ExpressionFuncs = [
 		() => -580,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			return () => Math.round(f0(1, n1.ExpObject("")));
+			return () => Math.round(f0(1, 9));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => ("." + (v0.GetValue()).toString());
 		},
 		p => {
 			const n0 = p._GetNode(0);
