@@ -6795,6 +6795,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Date.Exps.GetUTCSeconds,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Sprite.Exps.Y,
@@ -6803,7 +6804,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
-		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetchPlayerRating,
@@ -6836,11 +6836,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Json.Cnds.ForEach,
-		C3.Plugins.System.Exps.random,
-		C3.Plugins.Json.Exps.ArraySize,
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.Arr.Acts.Insert,
 		C3.Plugins.Arr.Exps.At,
+		C3.Plugins.System.Exps.random,
 		C3.Plugins.Arr.Acts.Delete,
 		C3.Plugins.Arr.Exps.IndexOf,
 		C3.Plugins.Text.Exps.Text
@@ -6928,7 +6927,6 @@ self.C3_JsPropNameTable = [
 	{Звуки: 0},
 	{Музыка: 0},
 	{ТайловыйФон: 0},
-	{Подложка2: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -6956,7 +6954,9 @@ self.C3_JsPropNameTable = [
 	{TrueStr: 0},
 	{RightChoice: 0},
 	{Money: 0},
-	{Timer: 0}
+	{Timer: 0},
+	{JSONEnum: 0},
+	{lenArr: 0}
 ];
 }
 
@@ -7104,6 +7104,10 @@ self.C3_ExpressionFuncs = [
 			return () => f0("typequiz");
 		},
 		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("jsonenum");
+		},
+		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() % 9);
 		},
@@ -7170,10 +7174,11 @@ self.C3_ExpressionFuncs = [
 		() => 60,
 		() => "Кнопочки",
 		() => "КнопкиБанка",
-		() => "КнопкиДвери",
 		() => 0.1,
+		() => "КнопкиДвери",
 		() => 75,
 		() => "starscount",
+		() => "jsonenum",
 		() => 960,
 		() => -2600,
 		() => 3300,
@@ -7317,12 +7322,10 @@ self.C3_ExpressionFuncs = [
 		() => 683,
 		() => 1206,
 		() => 3200,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const v2 = p._GetNode(2).GetVar();
-			return () => Math.round(f0(1, n1.ExpObject(("." + (v2.GetValue()).toString()))));
-		},
+		() => 21,
+		() => 16,
+		() => 27,
+		() => 20,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => ("." + (v0.GetValue()).toString());
