@@ -6819,7 +6819,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Date.Exps.ToTimerMinutes,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardPlayerFieldAt,
-		C3.Plugins.Text.Acts.SetFontSize,
 		C3.Plugins.Json.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
@@ -6928,6 +6927,8 @@ self.C3_JsPropNameTable = [
 	{Звуки: 0},
 	{Музыка: 0},
 	{ТайловыйФон: 0},
+	{ТайловыйФон2: 0},
+	{ТайловыйФон3: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -7203,7 +7204,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
-			return () => (f0() + ((v1.GetValue() - 1) * 9));
+			return () => ((f0() + ((v1.GetValue() - 1) * 9)) + 1);
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -7283,10 +7284,9 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("typerate");
 		},
-		() => "Турнир на прохождение чекпоинтов",
-		() => 35,
-		() => "Турнир на получение звезд",
-		() => "Турнир на получение золотых",
+		() => "Дальше всех",
+		() => "Больше звезд",
+		() => "Богаче всех",
 		() => 4,
 		() => "Настройки2",
 		() => -100000,
