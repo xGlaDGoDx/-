@@ -6778,6 +6778,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Acts.LoadURL,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerAvatar,
@@ -6786,8 +6788,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin.Acts.Unpin,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
-		C3.Plugins.System.Cnds.CompareBoolVar,
-		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Date.Exps.ToUTCString,
 		C3.Plugins.Date.Exps.Now,
 		C3.Plugins.Date.Exps.GetUTCHours,
@@ -6796,10 +6796,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
-		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Acts.SubVar,
-		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
@@ -6815,6 +6812,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.loopindex,
 		C3.Plugins.Text.Acts.SetOpacity,
 		C3.Plugins.Text.Acts.SetPos,
+		C3.Plugins.Sprite.Exps.X,
+		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Date.Exps.ToTimerHours,
 		C3.Plugins.Date.Exps.ToTimerMinutes,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -6823,6 +6822,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
 		C3.Plugins.AJAX.Cnds.OnComplete,
+		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Text.Cnds.CompareText,
 		C3.Behaviors.MoveTo.Cnds.IsMoving,
@@ -7142,12 +7142,12 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (((v0.GetValue() * 2) + 1) % 7);
 		},
+		() => 2,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
 		},
 		() => -4,
-		() => 2,
 		() => 8,
 		() => 540,
 		() => 1043,
@@ -7189,7 +7189,8 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 960,
 		() => -2600,
-		() => 3300,
+		() => 2500,
+		() => 3000,
 		() => -3000,
 		() => 25,
 		() => "SC",
@@ -7216,6 +7217,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "typequiz",
 		() => -2500,
+		() => -500,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
@@ -7325,10 +7327,10 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 2);
 		},
+		() => -1500,
 		() => 0.2,
 		() => 683,
 		() => 1206,
-		() => 3200,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
