@@ -6762,6 +6762,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
 		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Eponesh_GameScore.Cnds.PlatformType,
+		C3.Plugins.Text.Cnds.CompareInstanceVar,
+		C3.Plugins.Text.Acts.SetFontSize,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
@@ -6773,8 +6777,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Sprite.Acts.SetOpacity,
-		C3.Plugins.System.Exps.viewportleft,
 		C3.Plugins.TiledBg.Acts.SetX,
+		C3.Plugins.System.Exps.viewportleft,
 		C3.Plugins.TiledBg.Acts.SetY,
 		C3.Plugins.System.Exps.viewporttop,
 		C3.Plugins.TiledBg.Acts.SetSize,
@@ -6786,21 +6790,19 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.TiledBg.Exps.Width,
 		C3.Plugins.TiledBg.Acts.SetImageScaleY,
 		C3.Plugins.TiledBg.Exps.Height,
-		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerGet,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
-		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsAdsPreloaderPlaying,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Acts.LoadURL,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerAvatar,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
-		C3.Plugins.Text.Cnds.CompareInstanceVar,
 		C3.Behaviors.Pin.Acts.Unpin,
 		C3.Plugins.Date.Exps.ToUTCString,
 		C3.Plugins.Date.Exps.Now,
@@ -6811,10 +6813,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.System.Acts.SubVar,
-		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
+		C3.Plugins.Date.Exps.ToLocaleDateString,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
@@ -6832,6 +6834,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardPlayerFieldAt,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetchPlayerRating,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Json.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
@@ -6942,6 +6945,10 @@ self.C3_JsPropNameTable = [
 	{Музыка: 0},
 	{ТайловыйФон: 0},
 	{ТайловыйФон2: 0},
+	{Спрайт: 0},
+	{ФонОтключенияРекламы: 0},
+	{ДонатЗаОтключениеРекламы: 0},
+	{РекламаТекст: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -6956,7 +6963,7 @@ self.C3_JsPropNameTable = [
 	{CheckPr2: 0},
 	{CheckPr3: 0},
 	{OneGame: 0},
-	{Scale: 0},
+	{DateTO: 0},
 	{Checkpoints: 0},
 	{CycleNum: 0},
 	{TimeLeft: 0},
@@ -6966,6 +6973,7 @@ self.C3_JsPropNameTable = [
 	{GSDay: 0},
 	{enumerate: 0},
 	{DayNow: 0},
+	{DateGS: 0},
 	{RandomID: 0},
 	{TrueStr: 0},
 	{RightChoice: 0},
@@ -7087,9 +7095,16 @@ self.C3_ExpressionFuncs = [
 		() => 200,
 		() => 1270,
 		() => 500,
-		() => "Настройки",
-		() => 1,
 		() => 0,
+		() => 55,
+		() => "35 голосов",
+		() => 1,
+		() => "50 голосов",
+		() => 2,
+		() => "75 голосов",
+		() => 3,
+		() => "100 голосов",
+		() => "Настройки",
 		() => "",
 		p => {
 			const n0 = p._GetNode(0);
@@ -7102,7 +7117,7 @@ self.C3_ExpressionFuncs = [
 		() => "st",
 		() => -10000,
 		() => -5,
-		() => 3,
+		() => "ТайловыйФон",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(0);
@@ -7110,7 +7125,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (Math.abs(n0.ExpObject()) + Math.abs(f1(0)));
+			return () => (Math.abs(n0.ExpObject()) + f1(0));
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -7120,6 +7135,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() / 1967) * 100);
 		},
+		() => "СтартовыеНастройки",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("checkpointscount");
@@ -7184,12 +7200,13 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() % 4);
 		},
+		() => 960,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
 		},
 		() => -4,
-		() => 2,
+		() => 4,
 		() => "Турнир",
 		() => "Итоги",
 		p => {
@@ -7226,12 +7243,55 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (Math.round((v0.GetValue() / 9)) + 1);
 		},
-		() => 960,
 		() => -2600,
 		() => 2500,
 		() => 3000,
 		() => -3000,
 		() => 25,
+		() => 1334,
+		() => -1500,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("dateto");
+		},
+		() => "Отключение Рекалмы",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			return () => f0(f1(v2.GetValue(), 1, "."));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => f0(f1(f2(f3()), 1, "."));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (f0(f1(v2.GetValue(), 0, ".")) % 31);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => (f0(f1(f2(f3()), 0, ".")) % 31);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			const f5 = p._GetNode(5).GetBoundMethod();
+			const f6 = p._GetNode(6).GetBoundMethod();
+			return () => Math.abs((f0(f1(v2.GetValue(), 1, ".")) - f3(f4(f5(f6()), 1, "."))));
+		},
+		() => "dateto",
 		() => "SC",
 		() => "checkpointscount",
 		() => 5,
@@ -7336,11 +7396,16 @@ self.C3_ExpressionFuncs = [
 		() => "Дальше всех",
 		() => "Больше звезд",
 		() => "Богаче всех",
-		() => 4,
 		() => -2,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1());
+		},
 		() => "Настройки2",
 		() => -100000,
 		() => "Банк2",
+		() => "ТайловыйФон2",
 		() => "Угадай пословицы по картинке",
 		() => "Угадай афоризмы по картинке",
 		() => "Угадай крылатые выражения по картинке",
@@ -7375,7 +7440,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 2);
 		},
-		() => -1500,
 		() => 0.2,
 		() => 683,
 		() => 1206,
