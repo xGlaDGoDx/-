@@ -6795,7 +6795,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.System.Cnds.CompareVar,
-		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsAdsPreloaderPlaying,
@@ -6813,10 +6812,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.System.Acts.SubVar,
-		C3.Plugins.System.Acts.GoToLayout,
+		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Date.Exps.ToLocaleDateString,
+		C3.Plugins.Sprite.Exps.Opacity,
+		C3.Plugins.System.Acts.NextPrevLayout,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
@@ -6846,17 +6847,15 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.MoveTo.Cnds.OnArrived,
 		C3.Behaviors.MoveTo.Acts.Stop,
 		C3.Plugins.Sprite.Acts.SetPos,
-		C3.Plugins.Sprite.Exps.Opacity,
 		C3.Behaviors.MoveTo.Acts.MoveToObject,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Json.Exps.ArraySize,
-		C3.Plugins.Json.Cnds.ForEach,
-		C3.Plugins.Json.Exps.Get,
-		C3.Plugins.Arr.Acts.Insert,
-		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Exps.random,
+		C3.Plugins.Arr.Acts.Insert,
+		C3.Plugins.Json.Exps.Get,
+		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.Arr.Acts.Delete,
 		C3.Plugins.Arr.Exps.IndexOf,
 		C3.Plugins.Text.Exps.Text
@@ -6949,6 +6948,7 @@ self.C3_JsPropNameTable = [
 	{ФонОтключенияРекламы: 0},
 	{ДонатЗаОтключениеРекламы: 0},
 	{РекламаТекст: 0},
+	{БлюрНаПереход: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -6956,6 +6956,7 @@ self.C3_JsPropNameTable = [
 	{TypeQuiz: 0},
 	{TimeRate: 0},
 	{checkLDposition: 0},
+	{GoNext: 0},
 	{TypeRate: 0},
 	{MoneyRate: 0},
 	{PointRate: 0},
@@ -7292,6 +7293,15 @@ self.C3_ExpressionFuncs = [
 			return () => Math.abs((f0(f1(v2.GetValue(), 1, ".")) - f3(f4(f5(f6()), 1, "."))));
 		},
 		() => "dateto",
+		() => "АнимацияБлюра",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 2);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 2);
+		},
 		() => "SC",
 		() => "checkpointscount",
 		() => 5,
@@ -7404,6 +7414,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "Настройки2",
 		() => -100000,
+		() => "АнимацияБлюра2",
 		() => "Банк2",
 		() => "ТайловыйФон2",
 		() => "Угадай пословицы по картинке",
@@ -7432,14 +7443,6 @@ self.C3_ExpressionFuncs = [
 		() => 260,
 		() => 542,
 		() => 670,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 2);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 2);
-		},
 		() => 0.2,
 		() => 683,
 		() => 1206,
@@ -7450,28 +7453,39 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject((((v1.GetValue()).toString() + ".") + (v2.GetValue()).toString()));
 		},
 		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => ("." + (v0.GetValue()).toString());
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => Math.round(f0(1, n1.ExpObject((((v2.GetValue()).toString() + ".") + (v3.GetValue()).toString()))));
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(".id");
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => n0.ExpObject((and(((((v1.GetValue()).toString() + ".") + (v2.GetValue()).toString()) + "."), v3.GetValue()) + ".text_t"));
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(".text_t");
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => n0.ExpObject((and(((((v1.GetValue()).toString() + ".") + (v2.GetValue()).toString()) + "."), v3.GetValue()) + ".text_f1"));
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(".text_f1");
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => n0.ExpObject((and(((((v1.GetValue()).toString() + ".") + (v2.GetValue()).toString()) + "."), v3.GetValue()) + ".text_f2"));
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(".text_f2");
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(".url");
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => n0.ExpObject((and(((((v1.GetValue()).toString() + ".") + (v2.GetValue()).toString()) + "."), v3.GetValue()) + ".url"));
 		},
 		p => {
 			const n0 = p._GetNode(0);
