@@ -4744,6 +4744,7 @@ self.C3_ExpressionFuncs = [
 		() => "checkpointscount",
 		() => 5,
 		() => -1,
+		() => "100+",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() - 1);
