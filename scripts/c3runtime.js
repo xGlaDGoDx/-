@@ -4199,9 +4199,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.CompareVar,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsAdsPreloaderPlaying,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Acts.LoadURL,
@@ -4227,6 +4227,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Date.Exps.ToLocaleDateString,
 		C3.Plugins.Sprite.Exps.Opacity,
 		C3.Plugins.System.Acts.NextPrevLayout,
+		C3.Plugins.Date.Exps.ToTotalHours,
+		C3.Plugins.Date.Exps.ToTotalMinutes,
+		C3.Plugins.Date.Exps.ToTotalSeconds,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
@@ -4358,6 +4361,7 @@ self.C3_JsPropNameTable = [
 	{Rate: 0},
 	{Браузер: 0},
 	{RateLorW: 0},
+	{ДверьТекст: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -4375,6 +4379,7 @@ self.C3_JsPropNameTable = [
 	{CheckPr3: 0},
 	{OneGame: 0},
 	{DateTO: 0},
+	{OpenDoorTime: 0},
 	{Checkpoints: 0},
 	{CycleNum: 0},
 	{TimeLeft: 0},
@@ -4738,6 +4743,30 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 2);
 		},
+		() => "ТаймерДверь",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("opendoortime");
+		},
+		() => "opendoortime",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => (f0() - v1.GetValue());
+		},
+		() => 21600000,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			const f5 = p._GetNode(5).GetBoundMethod();
+			const f6 = p._GetNode(6).GetBoundMethod();
+			const f7 = p._GetNode(7).GetBoundMethod();
+			const f8 = p._GetNode(8).GetBoundMethod();
+			return () => and((and(and(f0(f1(f2())), ":"), (f3(f4(f5())) % 60)) + ":"), (f6(f7(f8())) % 60));
+		},
 		() => "SC",
 		() => "checkpointscount",
 		() => 5,
@@ -4873,6 +4902,11 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => f0(n1.ExpObject((f2() + 1)), 1, "|");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => ((((6 * 60) * 60) * 1000) - (f0() - v1.GetValue()));
 		},
 		() => "Настройки2",
 		() => -100000,
