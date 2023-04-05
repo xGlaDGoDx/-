@@ -4815,17 +4815,6 @@ self.C3_ExpressionFuncs = [
 		() => "ТаймерДверь",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("opendoortime");
-		},
-		() => "opendoortime",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => (f0() - v1.GetValue());
-		},
-		() => 21600000,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const f3 = p._GetNode(3).GetBoundMethod();
