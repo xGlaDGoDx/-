@@ -4332,11 +4332,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.Json.Exps.ArraySize,
-		C3.Plugins.System.Exps.random,
 		C3.Plugins.Arr.Acts.Insert,
 		C3.Plugins.Json.Exps.Get,
+		C3.Plugins.System.Exps.random,
 		C3.Plugins.Arr.Acts.Delete,
-		C3.Plugins.Arr.Exps.IndexOf
+		C3.Plugins.Arr.Exps.IndexOf,
+		C3.Plugins.Eponesh_GameScore.Acts.AnalyticsGoal
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4431,6 +4432,8 @@ self.C3_JsPropNameTable = [
 	{Браузер: 0},
 	{RateLorW: 0},
 	{ДверьТекст: 0},
+	{Pin: 0},
+	{ДверьСтатикТекст: 0},
 	{Аватары: 0},
 	{АватарыТурик: 0},
 	{StarsCount: 0},
@@ -4974,7 +4977,7 @@ self.C3_ExpressionFuncs = [
 		() => "Угадай пословицы по картинке",
 		() => "Угадай афоризмы по картинке",
 		() => "Угадай крылатые выражения по картинке",
-		() => "Угадай героев кино по картинке",
+		() => "Угадай, что изображено на картинке",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => and(("Задание" + " "), (v0.GetValue() + 1));
@@ -5001,17 +5004,15 @@ self.C3_ExpressionFuncs = [
 		() => 683,
 		() => 1206,
 		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => f0(and("jsonenum", v1.GetValue()));
+		},
+		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			const v2 = p._GetNode(2).GetVar();
 			return () => n0.ExpObject((((v1.GetValue()).toString() + ".") + (v2.GetValue()).toString()));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const v2 = p._GetNode(2).GetVar();
-			const v3 = p._GetNode(3).GetVar();
-			return () => Math.round(f0(1, (n1.ExpObject((((v2.GetValue()).toString() + ".") + (v3.GetValue()).toString())) - 1)));
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -5059,6 +5060,21 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject(0);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => Math.round(f0(1, (n1.ExpObject((((v2.GetValue()).toString() + ".") + (v3.GetValue()).toString())) - 1)));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("type", v0.GetValue());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("jsonenum", v0.GetValue());
 		}
 ];
 
