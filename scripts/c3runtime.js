@@ -4267,6 +4267,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
+		C3.Plugins.Eponesh_GameScore.Acts.AnalyticsGoal,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Behaviors.MoveTo.Acts.MoveToPosition,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
@@ -4291,6 +4292,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
+		C3.Plugins.System.Cnds.CompareBoolVar,
+		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Date.Exps.ToLocaleDateString,
@@ -4319,10 +4322,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.urlencode,
 		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Text.Exps.Text,
-		C3.Plugins.Json.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.AJAX.Acts.RequestFile,
-		C3.Plugins.System.Cnds.CompareBoolVar,
-		C3.Plugins.System.Acts.SetBoolVar,
+		C3.Plugins.Json.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Text.Cnds.CompareText,
 		C3.Behaviors.MoveTo.Cnds.IsMoving,
 		C3.Behaviors.MoveTo.Cnds.OnArrived,
@@ -4336,8 +4337,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.System.Exps.random,
 		C3.Plugins.Arr.Acts.Delete,
-		C3.Plugins.Arr.Exps.IndexOf,
-		C3.Plugins.Eponesh_GameScore.Acts.AnalyticsGoal
+		C3.Plugins.Arr.Exps.IndexOf
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4451,7 +4451,11 @@ self.C3_JsPropNameTable = [
 	{CheckPr3: 0},
 	{OneGame: 0},
 	{DateTO: 0},
+	{FirstGameButtonForSession: 0},
+	{FirstTournamentButtonForSession: 0},
+	{FirstRaitingButtonForSession: 0},
 	{OpenDoorTime: 0},
+	{true: 0},
 	{Checkpoints: 0},
 	{CycleNum: 0},
 	{TimeLeft: 0},
@@ -4638,10 +4642,6 @@ self.C3_ExpressionFuncs = [
 			return () => f0("typequiz");
 		},
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("jsonenum");
-		},
-		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() % 9);
 		},
@@ -4670,6 +4670,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => ((((v0.GetValue() * 2) + 1) % 7) + 1);
 		},
+		() => "game_screen",
 		() => 8,
 		() => 540,
 		() => 1043,
@@ -4759,6 +4760,16 @@ self.C3_ExpressionFuncs = [
 		() => -2600,
 		() => 2500,
 		() => 3000,
+		() => "clicked_game_butt_fist_time_all",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0("education")).toString();
+		},
+		() => "false",
+		() => "newbee_play_butt",
+		() => "education",
+		() => "daily_champ_click",
+		() => "rating_click",
 		() => -3000,
 		() => 25,
 		() => 1334,
@@ -4860,6 +4871,11 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (((v0.GetValue() * 2) + 1) % 7);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => f0(and("jsonenum", v1.GetValue()));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5004,11 +5020,6 @@ self.C3_ExpressionFuncs = [
 		() => 683,
 		() => 1206,
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => f0(and("jsonenum", v1.GetValue()));
-		},
-		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			const v2 = p._GetNode(2).GetVar();
@@ -5067,14 +5078,6 @@ self.C3_ExpressionFuncs = [
 			const v2 = p._GetNode(2).GetVar();
 			const v3 = p._GetNode(3).GetVar();
 			return () => Math.round(f0(1, (n1.ExpObject((((v2.GetValue()).toString() + ".") + (v3.GetValue()).toString())) - 1)));
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and("type", v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and("jsonenum", v0.GetValue());
 		}
 ];
 
