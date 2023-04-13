@@ -4248,13 +4248,14 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.TiledBg,
 		C3.Plugins.Browser,
 		C3.Plugins.LocalStorage,
+		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
 		C3.Plugins.Text.Acts.SetText,
-		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Eponesh_GameScore.Cnds.PlatformType,
 		C3.Plugins.Text.Cnds.CompareInstanceVar,
 		C3.Plugins.Text.Acts.SetFontSize,
@@ -4282,7 +4283,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.TiledBg.Exps.Width,
 		C3.Plugins.TiledBg.Acts.SetImageScaleY,
 		C3.Plugins.TiledBg.Exps.Height,
-		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerGet,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
@@ -4607,6 +4607,7 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		() => "Version 2.0",
 		() => "Банк",
 		() => 1267,
 		() => 50,
@@ -4662,7 +4663,6 @@ self.C3_ExpressionFuncs = [
 			return () => ((n0.ExpObject() / 1967) * 100);
 		},
 		() => "СтартовыеНастройки",
-		() => "Version 1.0",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("checkpointscount");
