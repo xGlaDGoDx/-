@@ -4252,6 +4252,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.System.Acts.UnloadUnusedTextures,
 		C3.Plugins.Eponesh_GameScore.Acts.AnalyticsGoal,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
 		C3.Plugins.System.Acts.AddVar,
@@ -4270,7 +4273,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Audio.Acts.FadeVolume,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.TiledBg.Acts.SetX,
 		C3.Plugins.System.Exps.viewportleft,
@@ -4289,10 +4291,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.Json.Acts.SetBoolInstanceVar,
-		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
-		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsAdsPreloaderPlaying,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
@@ -4504,6 +4504,7 @@ self.C3_JsPropNameTable = [
 	{Day: 0},
 	{GSDay: 0},
 	{DateGS: 0},
+	{URL: 0},
 	{RandomID: 0},
 	{TrueStr: 0},
 	{RightChoice: 0},
@@ -4611,9 +4612,13 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
-		() => "Version 3.0",
+		() => "Version 4.0",
 		() => "game_screen",
 		() => 0,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() % 3);
+		},
 		() => "Банк",
 		() => 1267,
 		() => 50,
@@ -4959,10 +4964,6 @@ self.C3_ExpressionFuncs = [
 			return () => f0(0, "typerate");
 		},
 		() => "day",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() % 3);
-		},
 		() => "https://www.tablequiz.ru/moneyrate.php",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5027,10 +5028,10 @@ self.C3_ExpressionFuncs = [
 			return () => ((((6 * 60) * 60) * 1000) - (f0() - v1.GetValue()));
 		},
 		() => 1043,
-		() => "А ты сможешь угадать выражение?",
 		() => "https://ok.ru/game/poslovica",
-		() => "https://i.mycdn.me/i?r=AzH_6SpAKLXS8rFFHl9gfwZjJoP_bX-5wZsaLFoxyaog70Fq5N8wHP7CgO5egvN-aUE",
 		() => "https://vk.com/app51571784_712633594",
+		() => "А ты сможешь угадать выражение?",
+		() => "https://i.mycdn.me/i?r=AzH_6SpAKLXS8rFFHl9gfwZjJoP_bX-5wZsaLFoxyaog70Fq5N8wHP7CgO5egvN-aUE",
 		() => "Настройки2",
 		() => -100000,
 		() => "АнимацияБлюра2",
