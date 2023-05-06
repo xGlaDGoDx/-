@@ -4357,7 +4357,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.MoveTo.Acts.Stop,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Behaviors.MoveTo.Acts.MoveToObject,
-		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.Json.Exps.ArraySize,
 		C3.Plugins.Arr.Acts.Insert,
@@ -4725,10 +4724,6 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() % 2);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() % 4);
 		},
 		() => -4,
@@ -5068,9 +5063,6 @@ self.C3_ExpressionFuncs = [
 		() => 260,
 		() => 542,
 		() => 670,
-		() => 0.2,
-		() => 683,
-		() => 1206,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
