@@ -12,6 +12,10 @@ html, body, canvas {
 	touch-action-delay: none;
 }
 
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+}
+
 #notSupportedWrap {
 	margin: 2em auto 1em auto;
 	width: 75%;
